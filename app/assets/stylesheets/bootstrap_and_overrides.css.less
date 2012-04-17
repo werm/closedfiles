@@ -27,16 +27,25 @@ body { padding-top: 60px; }
 //
 // Example:
 // @linkColor: #ff0000;
+
+@orange: #F05133;
+@lightOrange: #F05133;
+@darkOrange: #941600;
+@buttonText: #a61900;
+@heading: #222;
+
+h1 { color: @heading; }
+
 .navbar-inner {
   padding-left: 20px;
   padding-right: 20px;
   background-color: #F05133;
-  background-image: -moz-linear-gradient(top, #F05133, #FF8878);
-  background-image: -ms-linear-gradient(top, #F05133, #FF8878);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F05133), to(#FF8878));
-  background-image: -webkit-linear-gradient(top, #F05133, #FF8878);
-  background-image: -o-linear-gradient(top, #F05133, #FF8878);
-  background-image: linear-gradient(top, #F05133, #FF8878);
+  background-image: -moz-linear-gradient(top, #F05133, #F56145);
+  background-image: -ms-linear-gradient(top, #F05133, #F56145);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F05133), to(#F56145));
+  background-image: -webkit-linear-gradient(top, #F05133, #F56145);
+  background-image: -o-linear-gradient(top, #F05133, #F56145);
+  background-image: linear-gradient(top, #F05133, #F56145);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
   -webkit-border-radius: 4px;
@@ -51,4 +60,16 @@ body { padding-top: 60px; }
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  color: #fff;
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+  background-color: @darkOrange;
+}
+
+.navbar .nav > li > a {
+  color: #fff;
 }

@@ -1,6 +1,9 @@
 class ClosedfilesController < ApplicationController
   # GET /closedfiles
   # GET /closedfiles.json
+  
+  before_filter :authorize, only: [:edit, :update]  
+  
   def index
     @closedfiles = Closedfile.all
 

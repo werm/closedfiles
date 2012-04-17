@@ -1,37 +1,48 @@
+<%- model_class = Closedfile.new.class -%>
 <h1>Closed Files</h1>
-
-<table class="table">
-  <tr>
-    <th>File #</th>
-    <th>No. of Wallets</th>
-    <th>Client Name</th>
-    <th>Matter Name</th>
-    <th>Client/Matter #</th>
-    <th>Attorney Name</th>
-    <th>Destruction Date</th>
-    <th>Scaned?</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @closedfiles.each do |closedfile| %>
-  <tr>
-    <td><%= closedfile.file_number %></td>
-    <td><%= closedfile.wallet_qty %></td>
-    <td><%= closedfile.client_name %></td>
-    <td><%= closedfile.matter_name %></td>
-    <td><%= closedfile.cm_number %></td>
-    <td><%= closedfile.atty_name %></td>
-    <td><%= closedfile.destruction_date %></td>
-    <td><%= closedfile.scaned %></td>
-    <td><%= link_to 'Show', closedfile %></td>
-    <td><%= link_to 'Edit', edit_closedfile_path(closedfile) %></td>
-    <td><%= link_to 'Destroy', closedfile, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th>File #</th>
+      <th>Box #</th>
+      <th>No. of Wallets</th>
+      <th>Client Name</th>
+      <th>Matter Name</th>
+      <th>Client Matter #</th>
+      <th>Attorney Name</th>
+      <th>Destruction Date</th>
+      <th>Scanned?</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @closedfiles.each do |closedfile| %>
+      <tr>
+        <td><%= link_to closedfile.id, closedfile_path(closedfile) %></td>
+        <td><%= closedfile.file_number %></td>
+        <td><%= closedfile.box_number %></td>        
+        <td><%= closedfile.wallet_qty %></td>
+        <td><%= closedfile.client_name %></td>
+        <td><%= closedfile.matter_name %></td>
+        <td><%= closedfile.cm_number %></td>
+        <td><%= closedfile.atty_name %></td>
+        <td><%= closedfile.destruction_date %></td>
+        <td><%= closedfile.scaned %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_closedfile_path(closedfile), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      closedfile_path(closedfile),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New File', new_closedfile_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_closedfile_path,
+            :class => 'btn btn-primary' %>

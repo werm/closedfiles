@@ -15,14 +15,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Carlile Patchen &amp; Murphy</a>
+          <a class="brand" href="/">Carlile Patchen &amp; Murphy</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="/">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
-            <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
+            <% if current_user %>
+              <p class="navbar-text pull-right">Logged in as <%= current_user.email %>. <%= link_to "Log Out", session_path("current"), method: "delete" %></p>
+            <% else %>
+              <p class="navbar-text pull-right"><%= link_to "Sign Up", new_user_path %> or <%= link_to "Log In", new_session_path %></p>
+            <% end %>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -30,7 +34,7 @@
 <div class="main container-fluid">
   <% flash.each do |name, msg| %>
     <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-    <a class="close" data-dismiss="alert">
+    <a class="close" data-dismiss="alert">X</a>
       <%= msg  %>
     </div>
   <% end %>	

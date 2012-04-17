@@ -23,4 +23,6 @@ end
 gem 'jquery-rails'
 
 gem 'twitter-bootstrap-rails'
-gem 'devise'
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'thin'
+gem 'simple_form'

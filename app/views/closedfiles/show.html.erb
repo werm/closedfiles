@@ -1,45 +1,52 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @closedfile.class -%>
+<h1><%= @closedfile.file_number %></h1>
 
 <p>
-  <b>File number:</b>
+  <strong>File Number:</strong><br>
   <%= @closedfile.file_number %>
 </p>
-
 <p>
-  <b>Wallet qty:</b>
+  <strong>Box Number:</strong><br>
+  <%= @closedfile.box_number %>
+</p>
+<p>
+  <strong>No. of Wallets:</strong><br>
   <%= @closedfile.wallet_qty %>
 </p>
-
 <p>
-  <b>Client name:</b>
+  <strong>Client Name:</strong><br>
   <%= @closedfile.client_name %>
 </p>
-
 <p>
-  <b>Matter name:</b>
+  <strong>Matter Name:</strong><br>
   <%= @closedfile.matter_name %>
 </p>
-
 <p>
-  <b>Cm number:</b>
+  <strong>Client Matter Number:</strong><br>
   <%= @closedfile.cm_number %>
 </p>
-
 <p>
-  <b>Atty name:</b>
+  <strong>Attorney Name:</strong><br>
   <%= @closedfile.atty_name %>
 </p>
-
 <p>
-  <b>Destruction date:</b>
+  <strong>Destruction Date:</strong><br>
   <%= @closedfile.destruction_date %>
 </p>
-
 <p>
-  <b>Scaned:</b>
+  <strong>Scanned?:</strong><br>
   <%= @closedfile.scaned %>
 </p>
 
 
-<%= link_to 'Edit', edit_closedfile_path(@closedfile) %> |
-<%= link_to 'Back', closedfiles_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              closedfiles_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_closedfile_path(@closedfile), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              closedfile_path(@closedfile),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>
