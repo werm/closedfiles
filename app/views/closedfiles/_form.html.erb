@@ -1,0 +1,49 @@
+<%= form_for(@closedfile) do |f| %>
+  <% if @closedfile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@closedfile.errors.count, "error") %> prohibited this closedfile from being saved:</h2>
+
+      <ul>
+      <% @closedfile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :file_number %><br />
+    <%= f.text_field :file_number %>
+  </div>
+  <div class="field">
+    <%= f.label :wallet_qty %><br />
+    <%= f.number_field :wallet_qty %>
+  </div>
+  <div class="field">
+    <%= f.label :client_name %><br />
+    <%= f.text_field :client_name %>
+  </div>
+  <div class="field">
+    <%= f.label :matter_name %><br />
+    <%= f.text_field :matter_name %>
+  </div>
+  <div class="field">
+    <%= f.label :cm_number %><br />
+    <%= f.text_field :cm_number %>
+  </div>
+  <div class="field">
+    <%= f.label :atty_name %><br />
+    <%= f.text_field :atty_name %>
+  </div>
+  <div class="field">
+    <%= f.label :destruction_date %><br />
+    <%= f.number_field :destruction_date %>
+  </div>
+  <div class="field">
+    <%= f.label :scaned %><br />
+    <%= f.check_box :scaned %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

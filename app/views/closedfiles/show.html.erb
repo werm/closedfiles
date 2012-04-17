@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>File number:</b>
+  <%= @closedfile.file_number %>
+</p>
+
+<p>
+  <b>Wallet qty:</b>
+  <%= @closedfile.wallet_qty %>
+</p>
+
+<p>
+  <b>Client name:</b>
+  <%= @closedfile.client_name %>
+</p>
+
+<p>
+  <b>Matter name:</b>
+  <%= @closedfile.matter_name %>
+</p>
+
+<p>
+  <b>Cm number:</b>
+  <%= @closedfile.cm_number %>
+</p>
+
+<p>
+  <b>Atty name:</b>
+  <%= @closedfile.atty_name %>
+</p>
+
+<p>
+  <b>Destruction date:</b>
+  <%= @closedfile.destruction_date %>
+</p>
+
+<p>
+  <b>Scaned:</b>
+  <%= @closedfile.scaned %>
+</p>
+
+
+<%= link_to 'Edit', edit_closedfile_path(@closedfile) %> |
+<%= link_to 'Back', closedfiles_path %>

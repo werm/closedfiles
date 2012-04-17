@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  file_number: MyString
+  wallet_qty: 1
+  client_name: MyString
+  matter_name: MyString
+  cm_number: MyString
+  atty_name: MyString
+  destruction_date: 1
+  scaned: false
+
+two:
+  file_number: MyString
+  wallet_qty: 1
+  client_name: MyString
+  matter_name: MyString
+  cm_number: MyString
+  atty_name: MyString
+  destruction_date: 1
+  scaned: false

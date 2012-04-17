@@ -1,0 +1,37 @@
+<h1>Closed Files</h1>
+
+<table class="table">
+  <tr>
+    <th>File #</th>
+    <th>No. of Wallets</th>
+    <th>Client Name</th>
+    <th>Matter Name</th>
+    <th>Client/Matter #</th>
+    <th>Attorney Name</th>
+    <th>Destruction Date</th>
+    <th>Scaned?</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @closedfiles.each do |closedfile| %>
+  <tr>
+    <td><%= closedfile.file_number %></td>
+    <td><%= closedfile.wallet_qty %></td>
+    <td><%= closedfile.client_name %></td>
+    <td><%= closedfile.matter_name %></td>
+    <td><%= closedfile.cm_number %></td>
+    <td><%= closedfile.atty_name %></td>
+    <td><%= closedfile.destruction_date %></td>
+    <td><%= closedfile.scaned %></td>
+    <td><%= link_to 'Show', closedfile %></td>
+    <td><%= link_to 'Edit', edit_closedfile_path(closedfile) %></td>
+    <td><%= link_to 'Destroy', closedfile, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New File', new_closedfile_path %>
