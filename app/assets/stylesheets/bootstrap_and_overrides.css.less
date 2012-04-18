@@ -29,10 +29,25 @@ body { padding-top: 60px; }
 // @linkColor: #ff0000;
 
 @orange: #F05133;
-@lightOrange: #F05133;
+@lightOrange: #F56145;
 @darkOrange: #941600;
 @buttonText: #a61900;
+@active: #E63F20;
 @heading: #222;
+
+th .current {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+th .asc { 
+  background-image: url(asc.png); 
+}
+
+th .desc { 
+  background-image: url(desc.png); 
+}
 
 h1 { color: @heading; }
 
@@ -47,7 +62,7 @@ h1 { color: @heading; }
   background-image: -o-linear-gradient(top, #F05133, #F56145);
   background-image: linear-gradient(top, #F05133, #F56145);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F56145', endColorstr='#F05133', GradientType=0);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -60,6 +75,10 @@ h1 { color: @heading; }
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+a.brand, h1, h2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 
 .navbar {
@@ -67,9 +86,13 @@ h1 { color: @heading; }
 }
 
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
-  background-color: @darkOrange;
+  background-color: @active;
 }
 
 .navbar .nav > li > a {
   color: #fff;
+}
+
+.btn {
+  behavior: url(../javascripts/PIE.htc);
 }

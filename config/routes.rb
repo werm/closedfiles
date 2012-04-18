@@ -6,7 +6,9 @@ Closedfiles::Application.routes.draw do
 
   resources :sessions
   resources :users
-
+  resources :password_resets
+  resources :searches
+  
   root to: 'closedfiles#index'
   resources :closedfiles
 

@@ -3,16 +3,29 @@ class ClosedfilesController < ApplicationController
   # GET /closedfiles.json
   
   before_filter :authorize, only: [:edit, :update]  
-  
+  helper_method :sort_column, :sort_direction
   def index
     @closedfiles = Closedfile.all
-
+    @closedfiles = Closedfile.order(sort_column + ' ' + sort_direction)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @closedfiles }
     end
   end
-
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  end
+  
+  private
+  def sort_column
+    params[:sort] || "file_number"
+  end
+  
+  def sort_direction
+    params[:direction] || "asc"
+  end
+  
   # GET /closedfiles/1
   # GET /closedfiles/1.json
   def show

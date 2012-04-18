@@ -1,26 +1,30 @@
 <%- model_class = Closedfile.new.class -%>
 <h1>Closed Files</h1>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_closedfile_path,
+            :class => 'btn btn-primary' %>
+
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th>File #</th>
-      <th>Box #</th>
-      <th>No. of Wallets</th>
-      <th>Client Name</th>
-      <th>Matter Name</th>
-      <th>Client Matter #</th>
-      <th>Attorney Name</th>
-      <th>Destruction Date</th>
-      <th>Scanned?</th>
+      <th><%= sortable "file_number", "File #" =%></th>
+      <th><%= sortable "box_number", "Box #" =%></th>
+      <th><%= sortable "wallet_qty", "No. of Wallets" =%></th>
+      <th><%= sortable "client_name", "Client Name" =%></th>
+      <th><%= sortable "matter_name", "Matter Name" =%></th>
+      <th><%= sortable "cm_number", "Client Matter #" =%></th>
+      <th><%= sortable "atty_name", "Attorney Name"=%></th>
+      <th><%= sortable "destruction_date", "Destruction Date" =%></th>
+      <th><%= sortable "scanned", "Scanned?" =%></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @closedfiles.each do |closedfile| %>
       <tr>
-        <td><%= link_to closedfile.id, closedfile_path(closedfile) %></td>
-        <td><%= closedfile.file_number %></td>
+        <td><%= link_to closedfile.file_number, closedfile_path(closedfile) %></td>
         <td><%= closedfile.box_number %></td>        
         <td><%= closedfile.wallet_qty %></td>
         <td><%= closedfile.client_name %></td>
@@ -28,7 +32,7 @@
         <td><%= closedfile.cm_number %></td>
         <td><%= closedfile.atty_name %></td>
         <td><%= closedfile.destruction_date %></td>
-        <td><%= closedfile.scaned %></td>
+        <td><%= closedfile.scaned? ? 'Yes' : 'No' %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_closedfile_path(closedfile), :class => 'btn btn-mini' %>

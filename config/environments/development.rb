@@ -34,4 +34,18 @@ Closedfiles::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  config.action_mailer.default_url_options = { :host => "10.10.10.54:3000" }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "10.10.10.54:3000",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "hello@madebycraig.com",
+    password: "Cabana82"
+  }
+  
 end

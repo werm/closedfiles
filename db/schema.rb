@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417171419) do
+ActiveRecord::Schema.define(:version => 20120418163819) do
 
   create_table "closedfiles", :force => true do |t|
     t.string   "file_number"
@@ -27,12 +27,28 @@ ActiveRecord::Schema.define(:version => 20120417171419) do
     t.string   "box_number"
   end
 
+  create_table "searches", :force => true do |t|
+    t.string   "file_number"
+    t.string   "box_number"
+    t.integer  "wallet_qty"
+    t.string   "client_name"
+    t.string   "matter_name"
+    t.string   "cm_number"
+    t.string   "atty_name"
+    t.string   "destruction_date"
+    t.string   "scanned"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

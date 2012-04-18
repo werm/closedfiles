@@ -1,11 +1,3 @@
-#class User < ActiveRecord::Base
-#  has_secure_password
-  
-#  attr_accessible :email, :password, :password_confirmation
-  
-# validates_uniqueness_of :email
-#end
-
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
   has_secure_password
@@ -17,4 +9,12 @@ class User < ActiveRecord::Base
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
+  
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+  
 end
