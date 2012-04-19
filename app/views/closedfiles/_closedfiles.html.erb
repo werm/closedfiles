@@ -1,0 +1,42 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= sortable "file_number", "File #" =%></th>
+      <th><%= sortable "box_number", "Box #" =%></th>
+      <th><%= sortable "wallet_qty", "No. of Wallets" =%></th>
+      <th><%= sortable "client_name", "Client Name" =%></th>
+      <th><%= sortable "matter_name", "Matter Name" =%></th>
+      <th><%= sortable "cm_number", "Client Matter #" =%></th>
+      <th><%= sortable "atty_name", "Attorney Name"=%></th>
+      <th><%= sortable "destruction_date", "Destruction Date" =%></th>
+      <th><%= sortable "scanned", "Scanned?" =%></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @closedfiles.each do |closedfile| %>
+      <tr>
+        <td><%= link_to closedfile.file_number, closedfile_path(closedfile) %></td>
+        <td><%= closedfile.box_number %></td>        
+        <td><%= closedfile.wallet_qty %></td>
+        <td><span class="client_name"><%= closedfile.client_name %></span></td>
+        <td><span class="matter_name"><%= closedfile.matter_name %></span></td>
+        <td><%= closedfile.cm_number %></td>
+        <td><%= closedfile.atty_name %></td>
+        <td><%= closedfile.destruction_date %></td>
+        <td><%= closedfile.scaned? ? 'Yes' : 'No' %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_closedfile_path(closedfile), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      closedfile_path(closedfile),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

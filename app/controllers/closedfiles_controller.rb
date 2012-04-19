@@ -6,10 +6,11 @@ class ClosedfilesController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
     @closedfiles = Closedfile.all
-    @closedfiles = Closedfile.order(sort_column + ' ' + sort_direction)
+    @closedfiles = Closedfile.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 50, :page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @closedfiles }
+      format.js # index.js.erb
     end
   end
   
