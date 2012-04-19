@@ -44,8 +44,8 @@ Closedfiles::Application.configure do
     domain: "10.10.10.54:3000",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "hello@madebycraig.com",
-    password: "Cabana82"
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
   }
   
 end
